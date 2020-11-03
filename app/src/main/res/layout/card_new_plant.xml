@@ -1,0 +1,63 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_card_view"
+    cardview:cardCornerRadius="@dimen/card_corner_radius"
+    android:layout_marginTop="15sp"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/card_picture"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_card_view"
+            android:scaleType="centerCrop"
+            android:background="@color/colorPrimaryDark"
+            android:transitionName="name_trasition"
+            />
+        <LinearLayout
+            android:id="@+id/card_texts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_text_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textSize="@dimen/card_text_size_user_name"
+                android:textColor="@android:color/white"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/card_like_margin_top"
+                >
+                <CheckBox
+                    android:id="@+id/card_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_checkbox">
+                </CheckBox>
+                <TextView
+                    android:id="@+id/card_accountant_likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_accountant_likes"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

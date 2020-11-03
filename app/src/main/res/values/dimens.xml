@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_edit_text_login">22sp</dimen>
+    <dimen name="padding_edit_text_login">32dp</dimen>
+    <dimen name="text_size_dont_have_account">16sp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="padding_create_account">10dp</dimen>
+    <dimen name="height_card_view">200dp</dimen>
+    <dimen name="card_corner_radius">4dp</dimen>
+    <dimen name="card_text_size_user_name">25sp</dimen>
+    <dimen name="margin_left_card_time">5sp</dimen>
+    <dimen name="card_like_margin_top">10sp</dimen>
+    <dimen name="heigth_bottombar">70dp</dimen>
+    <dimen name="target_mini_circular_picture">40dp</dimen>
+    <dimen name="depend_target_circuclar_picture">-206dp</dimen>
+    <dimen name="depend_target_circular_picture">-206dp</dimen>
+    <dimen name="height_toolbar_yo">200dp</dimen>
+    <dimen name="padding_bottom_toolbar_me">20dp</dimen>
+    <dimen name="margin_toolbar_me">20dp</dimen>
+    <dimen name="text_size_usermane_toolbar_yo">25sp</dimen>
+    <dimen name="circular_picture_circular_yo">160dp</dimen>
+    <dimen name="margin_top_circular_picture">30dp</dimen>
+    <dimen name="elevation_circular_picture_yo">30dp</dimen>
+    <dimen name="target_y_mini_circular_picture">30dp</dimen>
+    <dimen name="height_appbar_picture_deatail">256dp</dimen>
+    <dimen name="height_appbar_picture_detail">256dp</dimen>
+</resources>
