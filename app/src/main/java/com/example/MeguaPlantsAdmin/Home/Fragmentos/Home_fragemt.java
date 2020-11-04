@@ -14,11 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.LinearLayout;
 
 import com.example.MeguaPlantsAdmin.Adater_recycler_plantas;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.Leer;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.example.MeguaPlantsAdmin.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,12 +35,13 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class Home_fragemt extends Fragment {
-    FloatingActionButton btn_agregar;
+    FloatingActionButton btn_agregar,btn_leer;
     RecyclerView recyclerView;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     ArrayList<Modelo_planta> plantas= new ArrayList<>();
     Adater_recycler_plantas adater_recycler_plantas;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,6 +98,14 @@ public class Home_fragemt extends Fragment {
     private void inicializar(View view) {
         btn_agregar=view.findViewById(R.id.btn_agregar);
         recyclerView= view.findViewById(R.id.recycler_picture_home);
+        btn_leer=view.findViewById(R.id.btn_leer);
+        btn_leer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), Leer.class);
+                startActivity(i);
+            }
+        });
         btn_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
