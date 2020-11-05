@@ -9,37 +9,27 @@ import androidx.core.content.FileProvider;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.hardware.camera2.CameraManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
-import com.example.MeguaPlantsAdmin.Camara_manager;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
-import com.example.MeguaPlantsAdmin.New_plant_manager;
 import com.example.MeguaPlantsAdmin.R;
 
 
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class New_plant extends AppCompatActivity {
@@ -122,6 +112,7 @@ public class New_plant extends AppCompatActivity {
     private void seleccionar_imagen(int id_boton) {
         Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
+
         switch (id_boton){
 
             case R.id.btn_agregar_imagen_modelo:

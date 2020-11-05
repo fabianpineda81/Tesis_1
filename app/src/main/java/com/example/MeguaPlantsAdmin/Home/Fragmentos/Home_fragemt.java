@@ -1,23 +1,34 @@
 package com.example.MeguaPlantsAdmin.Home.Fragmentos;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.MeguaPlantsAdmin.Adater_recycler_plantas;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
 import com.example.MeguaPlantsAdmin.Leer;
+import com.example.MeguaPlantsAdmin.Modelo_uri_serializable;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.example.MeguaPlantsAdmin.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,7 +38,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,12 +50,16 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class Home_fragemt extends Fragment {
+    private static final int CONSTANTE_TOMAR_FOTO =1 ;
+    private static final int CONSTANTE_ESCOGER_IMAGEN =2 ;
     FloatingActionButton btn_agregar,btn_leer;
     RecyclerView recyclerView;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     ArrayList<Modelo_planta> plantas= new ArrayList<>();
     Adater_recycler_plantas adater_recycler_plantas;
+    String[] opciones_imagenes= {"Escoger galeria ","Tomar una foto"};
+    String ruta_obsoluta;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -51,6 +70,7 @@ public class Home_fragemt extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private  View view;
 
     public Home_fragemt() {
         // Required empty public constructor
@@ -96,16 +116,17 @@ public class Home_fragemt extends Fragment {
     }
 
     private void inicializar(View view) {
+        this.view=view;
         btn_agregar=view.findViewById(R.id.btn_agregar);
         recyclerView= view.findViewById(R.id.recycler_picture_home);
         btn_leer=view.findViewById(R.id.btn_leer);
         btn_leer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), Leer.class);
-                startActivity(i);
+               leer();
             }
         });
+
         btn_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +141,7 @@ public class Home_fragemt extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 plantas.clear();
                 if(snapshot.exists()){
+
 
                     for(DataSnapshot snapshot_planta: snapshot.getChildren()){
                         Log.e("plantas firebase",snapshot_planta.toString());
@@ -151,7 +173,10 @@ public class Home_fragemt extends Fragment {
 
     }
 
-
+    private void leer() {
+        Dialog dialogo = crear_dialogo_escoger_imagen();
+        dialogo.show();
+    }
 
 
     public void showToolbar(String tittle,boolean upButton, View view ){
@@ -168,5 +193,128 @@ public class Home_fragemt extends Fragment {
         //se le pone el boton de regreso (hay que configurar la jerarquia )
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
+    }
+    public Dialog crear_dialogo_escoger_imagen() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext() );
+        builder.setTitle("escoger foto ").setItems(opciones_imagenes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(i == 0){
+                    seleccionar_imagen();
+                }else{
+
+                    tomar_foto_1();
+
+                }
+            }
+        });
+        return  builder.create();
+    }
+
+
+
+    private void seleccionar_imagen() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+         startActivityForResult(intent.createChooser(intent,"Selecione aplicacion"), CONSTANTE_ESCOGER_IMAGEN);
+
+    }
+
+    private void tomar_foto_1() {
+
+                tomar_foto();
+
+    }
+
+
+
+
+
+
+    public void tomar_foto(){
+        // prende la camara
+        File archivo_foto= null ;
+        Intent intent_tomar_foto= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(intent_tomar_foto.resolveActivity(getActivity().getPackageManager())!=null){
+
+            try {
+                archivo_foto= crear_archivo_foto();
+
+
+            }catch (Exception e ){
+                e.printStackTrace();
+            }
+        }else{
+
+            Toast.makeText(view.getContext(),"dio null",Toast.LENGTH_LONG);
+
+        }
+
+        if(archivo_foto!=null ){
+            Uri url_foto = FileProvider.getUriForFile(view.getContext(),"com.example.MeguaPlantsAdmin",archivo_foto);
+            Log.d("Home_fragment","photo_uri:"+ url_foto);
+            intent_tomar_foto.putExtra(MediaStore.EXTRA_OUTPUT,url_foto);
+
+
+            startActivityForResult(intent_tomar_foto,CONSTANTE_TOMAR_FOTO);
+        }
+
+    }
+
+
+
+    private File crear_archivo_foto() throws IOException {
+
+        String time_stamp=new SimpleDateFormat("yyyyMMdd_HH-mm-ss").format(new Date());
+
+        String nombre_imagen="JPEG_"+time_stamp;
+
+
+        File storage_dir=getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+
+
+        File archivo_foto= File.createTempFile(nombre_imagen,".jpg",storage_dir);
+
+
+
+        Toast.makeText(view.getContext(),storage_dir.toString(),Toast.LENGTH_LONG);
+        ruta_obsoluta=archivo_foto.getAbsolutePath();
+
+        return  archivo_foto;
+    }
+
+
+
+
+
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri;
+        Intent leer= new Intent(getActivity(),Leer.class);
+        if ( resultCode == getActivity().RESULT_OK) {
+
+            switch (requestCode){
+                case CONSTANTE_ESCOGER_IMAGEN:
+                uri= data.getData();
+                    leer.putExtra("uri",uri.toString());
+                    startActivity(leer);
+                    break;
+
+                case CONSTANTE_TOMAR_FOTO:
+
+                    leer.putExtra("ruta_imagen",ruta_obsoluta);
+                    startActivity(leer);
+                    startActivity(leer);
+                    break;
+            }
+
+
+
+
+
+        }
     }
 }

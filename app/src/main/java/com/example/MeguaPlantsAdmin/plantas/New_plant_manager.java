@@ -1,4 +1,4 @@
-package com.example.MeguaPlantsAdmin;
+package com.example.MeguaPlantsAdmin.plantas;
 
 import android.app.Activity;
 import android.app.NotificationChannel;
@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.R;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
