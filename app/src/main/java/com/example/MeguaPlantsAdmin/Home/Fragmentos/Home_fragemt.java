@@ -24,11 +24,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.MeguaPlantsAdmin.Adater_recycler_plantas;
+import com.example.MeguaPlantsAdmin.plantas.Adater_recycler_plantas;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
-import com.example.MeguaPlantsAdmin.Leer;
-import com.example.MeguaPlantsAdmin.Modelo_uri_serializable;
+import com.example.MeguaPlantsAdmin.plantas.Leer;
+import com.example.MeguaPlantsAdmin.plantas.Leer2;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.example.MeguaPlantsAdmin.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -60,6 +59,7 @@ public class Home_fragemt extends Fragment {
     Adater_recycler_plantas adater_recycler_plantas;
     String[] opciones_imagenes= {"Escoger galeria ","Tomar una foto"};
     String ruta_obsoluta;
+    File archivo_foto= null ;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -234,7 +234,7 @@ public class Home_fragemt extends Fragment {
 
     public void tomar_foto(){
         // prende la camara
-        File archivo_foto= null ;
+         archivo_foto= null ;
         Intent intent_tomar_foto= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(intent_tomar_foto.resolveActivity(getActivity().getPackageManager())!=null){
 
@@ -293,21 +293,25 @@ public class Home_fragemt extends Fragment {
 
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri;
-        Intent leer= new Intent(getActivity(),Leer.class);
+        Intent leer2= new Intent(getActivity(), Leer2.class);
         if ( resultCode == getActivity().RESULT_OK) {
 
             switch (requestCode){
                 case CONSTANTE_ESCOGER_IMAGEN:
                 uri= data.getData();
-                    leer.putExtra("uri",uri.toString());
-                    startActivity(leer);
+                    leer2.putExtra("uri",uri.toString());
+                    startActivity(leer2);
                     break;
 
                 case CONSTANTE_TOMAR_FOTO:
+                    uri= Uri.fromFile(archivo_foto);
+                    leer2.putExtra("uri",uri.toString());
+                    startActivity(leer2);
+                    // asi estaba
 
-                    leer.putExtra("ruta_imagen",ruta_obsoluta);
-                    startActivity(leer);
-                    startActivity(leer);
+                    //leer2.putExtra("ruta_imagen",ruta_obsoluta);
+                    //startActivity(leer2);
+
                     break;
             }
 

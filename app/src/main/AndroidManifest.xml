@@ -16,10 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Leer"></activity>
+        <activity android:name=".plantas.Leer2"></activity>
+        <activity android:name=".plantas.Leer" />
         <activity
             android:name=".plantas.New_plant"
-            android:parentActivityName=".Home.Container_Home"></activity>
+            android:parentActivityName=".Home.Container_Home" />
         <activity android:name=".Login.Login" />
         <activity android:name=".Home.Container_Home" />
         <activity android:name=".MainActivity">

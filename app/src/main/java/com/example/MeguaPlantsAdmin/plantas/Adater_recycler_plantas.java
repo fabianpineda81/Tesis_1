@@ -1,7 +1,6 @@
-package com.example.MeguaPlantsAdmin;
+package com.example.MeguaPlantsAdmin.plantas;
 
 import android.app.Activity;
-import android.graphics.Picture;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.R;
 
 
 import java.util.ArrayList;

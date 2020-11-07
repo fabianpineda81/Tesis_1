@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Leer"
+    tools:context=".plantas.Leer"
     android:layout_margin="20sp">
 
     <ScrollView
@@ -26,6 +26,7 @@
         android:id="@+id/img_reconocer"
         android:layout_width="match_parent"
         android:layout_height="300sp"
+            android:adjustViewBounds="true"
         />
             <TextView
                 android:layout_width="wrap_content"
