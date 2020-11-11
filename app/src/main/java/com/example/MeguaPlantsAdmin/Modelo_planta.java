@@ -1,8 +1,10 @@
 package com.example.MeguaPlantsAdmin;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Modelo_planta {
+public class Modelo_planta implements Parcelable {
     private String link_imagen_modelo;
     private String link_imagen_muestra_1;
     private String link_imagen_muestra_2;
@@ -20,6 +22,29 @@ public class Modelo_planta {
         this.caracteristicas = caracteristicas;
         this.descripcion = descripcion;
     }
+
+    protected Modelo_planta(Parcel in) {
+        link_imagen_modelo = in.readString();
+        link_imagen_muestra_1 = in.readString();
+        link_imagen_muestra_2 = in.readString();
+        link_imagen_muestra_3 = in.readString();
+        nombre = in.readString();
+        nombre_cientifico = in.readString();
+        caracteristicas = in.readString();
+        descripcion = in.readString();
+    }
+
+    public static final Creator<Modelo_planta> CREATOR = new Creator<Modelo_planta>() {
+        @Override
+        public Modelo_planta createFromParcel(Parcel in) {
+            return new Modelo_planta(in);
+        }
+
+        @Override
+        public Modelo_planta[] newArray(int size) {
+            return new Modelo_planta[size];
+        }
+    };
 
     public String getLink_imagen_modelo() {
         return link_imagen_modelo;
@@ -83,5 +108,22 @@ public class Modelo_planta {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(link_imagen_modelo);
+        parcel.writeString(link_imagen_muestra_1);
+        parcel.writeString(link_imagen_muestra_2);
+        parcel.writeString(link_imagen_muestra_3);
+        parcel.writeString(nombre);
+        parcel.writeString(nombre_cientifico);
+        parcel.writeString(caracteristicas);
+        parcel.writeString(descripcion);
     }
 }

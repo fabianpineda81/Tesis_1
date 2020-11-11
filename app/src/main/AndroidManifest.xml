@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera2"
@@ -16,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".plantas.Leer2"></activity>
+        <activity android:name=".plantas.Detalles_planta"
+            android:parentActivityName=".Home.Container_Home"></activity>
+        <activity android:name=".pruebas.Viewpager_prueba" />
+        <activity android:name=".plantas.Leer2" />
         <activity android:name=".plantas.Leer" />
         <activity
             android:name=".plantas.New_plant"

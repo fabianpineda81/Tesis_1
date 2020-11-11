@@ -4,11 +4,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.app.Dialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,7 +30,9 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.example.MeguaPlantsAdmin.Manejador_Bitmap;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.Modelo_uri;
 import com.example.MeguaPlantsAdmin.R;
 
 
@@ -34,24 +43,31 @@ import java.util.Date;
 
 public class New_plant extends AppCompatActivity {
     private static final int CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO1 = 1,CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO2 = 2,CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO3 = 3, CONSTANTE_FOTO_IMAGEN_MODELO=4,CONSTANTE_IMAGEN_ESCOGIDA_MODELO=5,CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_1=6,CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_2=7,CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_3=8;
+    private static final int CONSTANTE_PERMISO =10 ;
     View.OnClickListener onClick_agregar;
     ImageButton btn_imangen_muestra_1,btn_imangen_muestra_2,btn_imangen_muestra_3,btn_imagen_modelo;
     String[] opciones_imagenes= {"Escoger galeria ","Tomar una foto"};
     ImageView imagen_muestra_1,imagen_muestra_2,imagen_muestra_3,imagen_modelo;
     String ruta_obsoluta_imagen_modelo,ruta_obsoluta_imagen_muestra_1,ruta_obsoluta_imagen_muestra_2,ruta_obsoluta_imagen_muestra_3,ruta_obsoluta;
+    Bitmap bitmap;
     Button btn_postar;
     EditText txt_nombre,txt_nombre_cientifico,txt_descripcion,txt_caracteristicas;
+    Manejador_Bitmap manejador_bitmap = new Manejador_Bitmap();
+    File archivo_foto;
+    New_plant_manager new_plant_manager ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_plant);
         inicializar();
+        verificar_permiso();
 
     }
 
     private void inicializar() {
         showToolbar("Home",true);
+        new_plant_manager= new New_plant_manager(this);
         btn_imangen_muestra_1= findViewById(R.id.btn_agregar_imagen1);
         btn_imangen_muestra_2= findViewById(R.id.btn_agregar_imagen2);
         btn_imangen_muestra_3= findViewById(R.id.btn_agregar_imagen3);
@@ -75,7 +91,9 @@ public class New_plant extends AppCompatActivity {
                 String descripcion=txt_descripcion.getText().toString();
 
                 Modelo_planta modelo_planta= new Modelo_planta(nombre,nombre_cienteifico,caracteristicas,descripcion);
-                New_plant_manager new_plant_manager= new New_plant_manager(modelo_planta,imagen_modelo,imagen_muestra_1,imagen_muestra_2,imagen_muestra_3,New_plant.this);
+                new_plant_manager.setModelo_planta(modelo_planta);
+                new_plant_manager.montar_imagenes();
+
             }
         });
         onClick_agregar= new View.OnClickListener() {
@@ -93,6 +111,7 @@ public class New_plant extends AppCompatActivity {
 
     public Dialog Crear_dialogo_escoger_imagen( final int  id_boton ) {
 
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this );
         builder.setTitle("escoger foto ").setItems(opciones_imagenes, new DialogInterface.OnClickListener() {
             @Override
@@ -107,6 +126,33 @@ public class New_plant extends AppCompatActivity {
             }
         });
         return  builder.create();
+    }
+
+
+
+
+
+    private boolean verificar_permiso() {
+        int verificarPermisoReadContacts = ContextCompat
+                .checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if(verificarPermisoReadContacts!= PackageManager.PERMISSION_GRANTED){
+
+            if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
+                //pedir el permiso
+                Toast.makeText(this,"acptelo por favor:(",Toast.LENGTH_LONG).show();
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CONSTANTE_PERMISO);
+
+
+            }else{
+
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CONSTANTE_PERMISO);
+            }
+
+
+        }else{
+            return  true ;
+        }
+return false;
     }
 
     private void seleccionar_imagen(int id_boton) {
@@ -201,7 +247,7 @@ public class New_plant extends AppCompatActivity {
 
 
 
-        File archivo_foto= File.createTempFile(nombre_imagen,".jpg",storage_dir);
+         archivo_foto= File.createTempFile(nombre_imagen,".jpg",storage_dir);
 
 
 
@@ -217,57 +263,73 @@ public class New_plant extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri;
+        Modelo_uri modelo_uri;
+        Bitmap imagen_bitmap;
+
         if ( resultCode == RESULT_OK) {
             switch (requestCode){
             case CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO1 :
-
-                Glide.with(this).load(ruta_obsoluta).into(imagen_muestra_1);
-
-
-                ruta_obsoluta_imagen_muestra_1=ruta_obsoluta;
-
+                 uri= Uri.fromFile(archivo_foto);
+                 modelo_uri = new Modelo_uri(true,uri);
+                 new_plant_manager.setImagen_muestra1(modelo_uri);
+                 imagen_bitmap = manejador_bitmap.rotar_foto(uri,this);
+                 Glide.with(this).load(imagen_bitmap).into(imagen_muestra_1);
 
                 break;
+
             case CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO2 :
-                Glide.with(this).load(ruta_obsoluta).into(imagen_muestra_2);
-                ruta_obsoluta_imagen_muestra_2=ruta_obsoluta;
+                uri= Uri.fromFile(archivo_foto);
+                modelo_uri = new Modelo_uri(true,uri);
+                new_plant_manager.setImagen_muestra2(modelo_uri);
+                Glide.with(this).load(archivo_foto).into(imagen_muestra_2);
 
                 break;
 
                case CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO3 :
-                   Glide.with(this).load(ruta_obsoluta).into(imagen_muestra_3);
-                   ruta_obsoluta_imagen_muestra_3=ruta_obsoluta;
+                   uri= Uri.fromFile(archivo_foto);
+                   modelo_uri = new Modelo_uri(true,uri);
+                   new_plant_manager.setImagen_muestra3(modelo_uri);
+                   Glide.with(this).load(archivo_foto).into(imagen_muestra_3);
 
                break;
 
                 case CONSTANTE_FOTO_IMAGEN_MODELO:
-                    Glide.with(this).load(ruta_obsoluta).into(imagen_modelo);
-                    ruta_obsoluta_imagen_modelo=ruta_obsoluta;
-                  break;
+                    uri= Uri.fromFile(archivo_foto);
+                    modelo_uri = new Modelo_uri(true,uri);
+                    new_plant_manager.setImagen_modelo(modelo_uri);
+                    Glide.with(this).load(archivo_foto).into(imagen_modelo);
+
+                    break;
 
                 case CONSTANTE_IMAGEN_ESCOGIDA_MODELO:
-                     uri= data.getData();
-
+                    uri= data.getData();
+                    modelo_uri= new Modelo_uri(false , uri);
+                    new_plant_manager.setImagen_modelo(modelo_uri);
                     Glide.with(this).load(uri).into(imagen_modelo);
+
 
                     break;
                 case CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_1:
-                     uri= data.getData();
 
+                    uri= data.getData();
+                    modelo_uri= new Modelo_uri(false , uri);
+                    new_plant_manager.setImagen_muestra1(modelo_uri);
                     Glide.with(this).load(uri).into(imagen_muestra_1);
-
-                    break;
+                     break;
                 case CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_2:
                     uri= data.getData();
-
+                    modelo_uri= new Modelo_uri(false , uri);
+                    new_plant_manager.setImagen_muestra2(modelo_uri);
                     Glide.with(this).load(uri).into(imagen_muestra_2);
 
                     break;
 
                 case CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_3:
                     uri= data.getData();
-
+                    modelo_uri= new Modelo_uri(false , uri);
+                    new_plant_manager.setImagen_muestra3(modelo_uri);
                     Glide.with(this).load(uri).into(imagen_muestra_3);
+
 
                     break;
 

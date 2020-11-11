@@ -61,7 +61,7 @@ public class Reconocedor_plata {
     Uri uri;
 
 
-    FirebaseAutoMLRemoteModel remoteModel = new FirebaseAutoMLRemoteModel.Builder("Flores").build();
+    FirebaseAutoMLRemoteModel remoteModel = new FirebaseAutoMLRemoteModel.Builder("Flores2").build();
     FirebaseModelManager modelManager= FirebaseModelManager.getInstance();
 
 
@@ -89,6 +89,19 @@ public class Reconocedor_plata {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         crear_notificacion("termino de descargar","termino de descargar");
+                        FirebaseVisionOnDeviceAutoMLImageLabelerOptions optionsBuilder = new FirebaseVisionOnDeviceAutoMLImageLabelerOptions.Builder(remoteModel)
+                                .setConfidenceThreshold(0.0f)  // Evaluate your model in the Firebase console
+                                // to determine an appropriate value.
+                                .build();
+
+                        try {
+                            // aca le pasamos el modelo al lebeler
+                            Log.e("descargar modelo ","modelo descargado");
+                            mio = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(optionsBuilder);
+                            reconocer_imagen();
+                        } catch (FirebaseMLException | IOException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 });
@@ -98,18 +111,7 @@ public class Reconocedor_plata {
             @Override
             public void onSuccess(Boolean descargado) {
                 if(descargado){
-                    FirebaseVisionOnDeviceAutoMLImageLabelerOptions optionsBuilder = new FirebaseVisionOnDeviceAutoMLImageLabelerOptions.Builder(remoteModel)
-                            .setConfidenceThreshold(0.0f)  // Evaluate your model in the Firebase console
-                            // to determine an appropriate value.
-                            .build();
-
-                    try {
-                        // aca le pasamos el modelo al lebeler
-                        mio = FirebaseVision.getInstance().getOnDeviceAutoMLImageLabeler(optionsBuilder);
-                        reconocer_imagen();
-                    } catch (FirebaseMLException | IOException e) {
-                        e.printStackTrace();
-                    }
+                Log.e(" si esta descargado","esta descargado ");
                 }
             }
         });

@@ -15,6 +15,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -30,6 +31,8 @@ import com.example.MeguaPlantsAdmin.plantas.Leer;
 import com.example.MeguaPlantsAdmin.plantas.Leer2;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.example.MeguaPlantsAdmin.R;
+import com.example.MeguaPlantsAdmin.pruebas.Fragment_prueba;
+import com.example.MeguaPlantsAdmin.pruebas.Viewpager_prueba;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -123,7 +126,8 @@ public class Home_fragemt extends Fragment {
         btn_leer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               leer();
+                leer();
+
             }
         });
 
@@ -192,6 +196,7 @@ public class Home_fragemt extends Fragment {
 
         //se le pone el boton de regreso (hay que configurar la jerarquia )
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
 
     }
     public Dialog crear_dialogo_escoger_imagen() {

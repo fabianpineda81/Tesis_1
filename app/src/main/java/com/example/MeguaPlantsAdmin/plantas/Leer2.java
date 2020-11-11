@@ -1,5 +1,6 @@
 package com.example.MeguaPlantsAdmin.plantas;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -66,26 +67,28 @@ public class Leer2 extends AppCompatActivity {
         //inicializar el botton sheet
         View bottom_sheet= findViewById(R.id.bottom_sheet_resultados);
         bottomSheetBehavior= BottomSheetBehavior.from(bottom_sheet);
-        colapsar= findViewById(R.id.colapsar);
-        expandir= findViewById(R.id.expandir);
-        colapsar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-            }
-        });
-        expandir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        });
+        //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
        recyclerView = findViewById(R.id.recycler_picture_leer);
 
         imagen= findViewById(R.id.img_reconocer2);
 
         createNotificationChannel();
 
+        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if(newState ==BottomSheetBehavior.STATE_HIDDEN){
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
     }
 
     private void cargar_imagen() throws IOException {

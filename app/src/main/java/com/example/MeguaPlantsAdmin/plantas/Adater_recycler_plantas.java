@@ -1,6 +1,7 @@
 package com.example.MeguaPlantsAdmin.plantas;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
 import com.example.MeguaPlantsAdmin.R;
+import com.example.MeguaPlantsAdmin.pruebas.Viewpager_prueba;
 
 
 import java.util.ArrayList;
@@ -43,7 +45,7 @@ public class Adater_recycler_plantas extends RecyclerView.Adapter<Adater_recycle
 
     @Override
     public void onBindViewHolder(@NonNull Planta_View_holder holder, int position) {
-        Modelo_planta planta= plantas.get(position);
+        final Modelo_planta planta= plantas.get(position);
         Log.e("holder",""+plantas.size());
         holder.nombre.setText(planta.getNombre());
         holder.numero_me_gusta.setText("0");
@@ -52,6 +54,9 @@ public class Adater_recycler_plantas extends RecyclerView.Adapter<Adater_recycle
             @Override
             public void onClick(View view) {
                 Toast.makeText(activity.getBaseContext(),"click carta platan",Toast.LENGTH_LONG).show();
+                Intent i = new Intent(activity.getBaseContext(), Detalles_planta.class);
+                i.putExtra("planta", planta);
+                activity.startActivity(i);
             }
         });
 

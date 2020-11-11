@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.MeguaPlantsAdmin.Manejador_Bitmap;
 import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.Modelo_uri;
 import com.example.MeguaPlantsAdmin.R;
 import com.example.MeguaPlantsAdmin.plantas.New_plant;
 import com.google.android.gms.auth.api.signin.internal.Storage;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -34,59 +37,65 @@ import java.io.ByteArrayOutputStream;
 
 public class New_plant_manager {
     Modelo_planta modelo_planta;
-    ImageView imagen_modelo, imagen_muestra1, imagen_muestra2,imagen_muestra3;
+   Modelo_uri imagen_modelo, imagen_muestra1, imagen_muestra2,imagen_muestra3;
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef;
+    StorageReference storageRef=storage.getReference("imagenes");;
     UploadTask uploadTask;
     Boolean subiento_archivos= false ;
     Activity activity;
     int conn=1;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mydbref = database.getReference();
+    Manejador_Bitmap manejador_bitmap= new Manejador_Bitmap();
 
+    public New_plant_manager(Activity activity) {
+        this.activity = activity;
+        createNotificationChannel();
+    }
 
-
-    public New_plant_manager(Modelo_planta modelo_planta, ImageView imagen_modelo, ImageView imagen_muestra1, ImageView imagen_muestra2, ImageView imagen_muestra3,Activity activity) {
+    public New_plant_manager(Modelo_planta modelo_planta, Activity activity) {
         this.modelo_planta = modelo_planta;
-        this.imagen_modelo = imagen_modelo;
-        this.imagen_muestra1 = imagen_muestra1;
-        this.imagen_muestra2 = imagen_muestra2;
-        this.imagen_muestra3 = imagen_muestra3;
+
         this.activity=activity;
         createNotificationChannel();
-        storageRef = storage.getReference("imagenes");
-        montar_imagenes();
+
+
 
 
     }
 
-   private void  montar_imagenes(){
+
+    public void  montar_imagenes(){
 
        montar_imagen(imagen_modelo,"Imagen_modelo");
 
 
     }
 
-    private void  montar_imagen(ImageView New_imagen,String nombre_imagen){
-
-        New_imagen.setDrawingCacheEnabled(true);
-        New_imagen.buildDrawingCache();
-        Bitmap bitmap= New_imagen.getDrawingCache();
-
-
-        ByteArrayOutputStream baos= new ByteArrayOutputStream();
-
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
-
-
-
-        byte[] foto_byte= baos.toByteArray();
-
+    private void  montar_imagen(Modelo_uri New_imagen,String nombre_imagen){
 
 
         final StorageReference foto_referecia= storageRef.child(this.modelo_planta.getNombre_cientifico()+"/"+nombre_imagen);
 
-        uploadTask=foto_referecia.putBytes(foto_byte);
+
+        //uploadTask=foto_referecia.putFile(New_imagen);
+
+        //foto_referecia.putFile(New_imagen);
+        Bitmap bitmap;
+        if(New_imagen.is_foto()){
+            bitmap=manejador_bitmap.rotar_foto(New_imagen.getUri(),activity);
+        }else{
+            bitmap=manejador_bitmap.rotar_imagen(New_imagen.getUri(),activity);
+        }
+
+
+
+
+
+        byte[] foto_byte= manejador_bitmap.de_bitmap_a_byte_array_comprees(bitmap);
+
+
+        uploadTask= foto_referecia.putBytes(foto_byte);
 
 
 
@@ -175,6 +184,8 @@ public class New_plant_manager {
 
     }
 
+
+
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -226,9 +237,43 @@ public class New_plant_manager {
     }
 
 
+    public Modelo_planta getModelo_planta() {
+        return modelo_planta;
+    }
 
+    public void setModelo_planta(Modelo_planta modelo_planta) {
+        this.modelo_planta = modelo_planta;
+    }
 
+    public Modelo_uri getImagen_modelo() {
+        return imagen_modelo;
+    }
 
+    public void setImagen_modelo(Modelo_uri imagen_modelo) {
+        this.imagen_modelo = imagen_modelo;
+    }
 
+    public Modelo_uri getImagen_muestra1() {
+        return imagen_muestra1;
+    }
 
+    public void setImagen_muestra1(Modelo_uri imagen_muestra1) {
+        this.imagen_muestra1 = imagen_muestra1;
+    }
+
+    public Modelo_uri getImagen_muestra2() {
+        return imagen_muestra2;
+    }
+
+    public void setImagen_muestra2(Modelo_uri imagen_muestra2) {
+        this.imagen_muestra2 = imagen_muestra2;
+    }
+
+    public Modelo_uri getImagen_muestra3() {
+        return imagen_muestra3;
+    }
+
+    public void setImagen_muestra3(Modelo_uri imagen_muestra3) {
+        this.imagen_muestra3 = imagen_muestra3;
+    }
 }

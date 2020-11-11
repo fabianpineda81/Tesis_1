@@ -17,41 +17,33 @@
         android:adjustViewBounds="true"
         android:layout_gravity="center"
         />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top">
-        <Button
-            android:id="@+id/expandir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="expandir"/>
-    <Button
-        android:id="@+id/colapsar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="colapsar"/>
-    </LinearLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottom_sheet_resultados"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:background="#fff"
+        android:background="@drawable/corner_radius"
+
         app:layout_behavior="@string/bottom_sheet_behavior"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="55dp">
+        app:behavior_peekHeight="55dp"
+        android:theme="@style/BottomSheetDialogTheme"
+        android:elevation="7dp"
+   >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+
+            >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Resultados"
-            android:textSize="34sp"/>
+            android:textSize="34sp"
+            android:textColor="#000"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
