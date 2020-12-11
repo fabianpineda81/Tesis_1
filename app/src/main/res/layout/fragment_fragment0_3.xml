@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".plantas.new_plant.Imagenes">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Imagenes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginLeft="14dp"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ic_galeria_de_imagenes" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Imagenes de "
+                        android:layout_marginLeft="10dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    <TextView
+                        android:id="@+id/nombre_planta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="planta"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="12dp"
+                        android:layout_margin="4dp"
+
+                        >
+
+
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+
+
+                            android:scaleType="centerCrop"
+                            android:id="@+id/new_plant_imagen_modelo"
+
+                            />
+
+                        <ImageButton
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@drawable/ic_mas"
+                            android:layout_gravity="end"
+                            android:id="@+id/btn_agregar_imagen_modelo"
+                            android:elevation="20dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Imagen modelo "
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textColor="#fff"
+                            android:layout_gravity="bottom"/>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:cardCornerRadius="12dp"
+                    android:layout_margin="4dp"
+
+                    >
+
+
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="match_parent"
+
+
+                        android:scaleType="centerCrop"
+                        android:id="@+id/new_plant_imagen_muestra_1"
+
+                        />
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/ic_mas"
+                        android:layout_gravity="end"
+                        android:id="@+id/btn_agregar_imagen1"
+                        android:elevation="20dp"
+                        android:layout_marginRight="5dp"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:text="Imagen muestra 1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#fff" />
+
+
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    cardview:cardCornerRadius="12dp"
+                    android:layout_margin="4dp"
+                    android:id="@+id/card_view_muestra_1"
+                    >
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="100dp"
+
+                        android:id="@+id/new_plant_imagen_muestra_2"
+                        android:scaleType="centerCrop"/>
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/ic_mas"
+                        android:layout_gravity="end"
+                        android:id="@id/btn_agregar_imagen2"
+                        android:elevation="20dp"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:text="Imagen muestra 2 "
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#fff" />
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    cardview:cardCornerRadius="12dp"
+                    android:layout_margin="4dp"
+                    android:id="@+id/card_view_muestra_2">
+
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="100dp"
+
+                        android:id="@+id/new_plant_imagen_muestra_3"
+                        android:scaleType="centerCrop"
+                        />
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/ic_mas"
+                        android:layout_gravity="end"
+                        android:id="@+id/btn_agregar_imagen3"
+                        android:elevation="20dp"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:text="Imagen muestra 3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#fff" />
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    cardview:cardCornerRadius="12dp"
+                    android:layout_margin="4dp"
+                    android:id="@+id/card_view_muestra_3">
+
+                    <ImageView
+                        android:layout_width="190dp"
+                        android:layout_height="100dp"
+
+                        android:id="@+id/new_plant_imagen_muestra_4"
+                        android:scaleType="centerCrop"
+                        />
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/ic_mas"
+                        android:layout_gravity="end"
+                        android:id="@+id/btn_agregar_imagen4"
+                        android:elevation="20dp"
+                        android:layout_marginRight="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="5dp"
+                        android:text="Imagen modelo 4"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#fff" />
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

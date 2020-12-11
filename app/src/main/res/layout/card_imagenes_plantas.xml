@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,20 +15,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fotos de "
-                android:layout_marginLeft="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <TextView
-                android:id="@+id/nombre_planta"
+
+
+            <LinearLayout
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="planta"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                 />
+
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_galeria_de_imagenes" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Imagenes de "
+                    android:layout_marginLeft="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                <TextView
+                    android:id="@+id/nombre_planta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="planta"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -51,11 +69,11 @@
             android:layout_width="190dp"
             android:layout_height="100dp"
             android:background="@color/cardview_dark_background"
-            android:id="@+id/imagen_muestra_modelo"
+            android:id="@+id/imagen_muestra_1"
             android:scaleType="centerCrop"
             />
         <ProgressBar
-            android:id="@+id/progressBar_imagen_muestra_modelo"
+            android:id="@+id/progressBar_imagen_muestra_1"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,10 +92,10 @@
             android:layout_width="190dp"
             android:layout_height="100dp"
             android:background="@color/cardview_dark_background"
-            android:id="@+id/imagen_muestra_1"
+            android:id="@+id/imagen_muestra_2"
             android:scaleType="centerCrop"/>
         <ProgressBar
-            android:id="@+id/progressBar_imagen_muestra_1"
+            android:id="@+id/progressBar_imagen_muestra_2"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,11 +120,11 @@
                 android:layout_width="190dp"
                 android:layout_height="100dp"
                 android:background="@color/cardview_dark_background"
-                android:id="@+id/imagen_muestra_2"
+                android:id="@+id/imagen_muestra_3"
                 android:scaleType="centerCrop"
                 />
             <ProgressBar
-                android:id="@+id/progressBar_imagen_muestra_2"
+                android:id="@+id/progressBar_imagen_muestra_3"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,11 +142,11 @@
                 android:layout_width="190dp"
                 android:layout_height="100dp"
                 android:background="@color/cardview_dark_background"
-                android:id="@+id/imagen_muestra_3"
+                android:id="@+id/imagen_muestra_4"
                 android:scaleType="centerCrop"
                 />
             <ProgressBar
-                android:id="@+id/progressBar_imagen_muestra_3"
+                android:id="@+id/progressBar_imagen_muestra_4"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

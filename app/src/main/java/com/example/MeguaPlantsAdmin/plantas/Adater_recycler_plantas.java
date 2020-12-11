@@ -16,9 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.MeguaPlantsAdmin.Modelo_planta;
 import com.example.MeguaPlantsAdmin.R;
-import com.example.MeguaPlantsAdmin.pruebas.Viewpager_prueba;
 
 
 import java.util.ArrayList;

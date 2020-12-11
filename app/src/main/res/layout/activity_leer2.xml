@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".plantas.Leer2"
+    tools:context=".plantas.reconocimiento_planta.Leer2"
     android:background="#000"
     android:gravity="center"
     >

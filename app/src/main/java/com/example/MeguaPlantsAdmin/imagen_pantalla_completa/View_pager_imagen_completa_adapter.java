@@ -1,4 +1,4 @@
-package com.example.MeguaPlantsAdmin.pruebas;
+package com.example.MeguaPlantsAdmin.imagen_pantalla_completa;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,11 +7,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 
-public class View_pager_adapter extends FragmentStateAdapter {
+public class View_pager_imagen_completa_adapter extends FragmentStateAdapter {
     ArrayList<String> links;
 
     boolean primera=true ;
-    public View_pager_adapter(@NonNull FragmentActivity fragmentActivity,ArrayList<String> links) {
+    public View_pager_imagen_completa_adapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> links) {
         super(fragmentActivity);
         this.links=links;
 
@@ -24,7 +24,7 @@ public class View_pager_adapter extends FragmentStateAdapter {
         // pasa hacer frames distintos
         // switch (position)
 
-            Fragment fragment = Fragment_prueba.newInstance(links.get(position));
+            Fragment fragment = Fragment_imagen_completa.newInstance(links.get(position));
 
         //Bundle bundle= new Bundle();
         //bundle.putString("link","hola");

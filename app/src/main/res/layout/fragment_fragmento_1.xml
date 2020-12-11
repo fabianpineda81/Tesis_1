@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".plantas.new_plant.Datos_generales">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datos generales"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_hoja"
+                app:startIconTintMode="screen"
+                app:startIconTint="@android:color/transparent"
+                android:hint="Nombre"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                android:id="@+id/new_plant_nombre_container"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/new_plant_nombre"
+
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_hoja"
+                app:startIconTintMode="screen"
+                app:startIconTint="@android:color/transparent"
+                android:hint="Descripcion"
+                android:id="@+id/new_plant_descripcion_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/new_plant_descripcion"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:startIconTintMode="screen"
+                app:startIconTint="@android:color/transparent"
+                app:startIconDrawable="@drawable/ic_sorprendido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Datos de interes"
+                android:id="@+id/new_plant_datos_interes_container"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/new_plant_datos_interes"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

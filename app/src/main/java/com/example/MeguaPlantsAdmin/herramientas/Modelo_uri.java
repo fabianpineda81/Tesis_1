@@ -1,4 +1,4 @@
-package com.example.MeguaPlantsAdmin;
+package com.example.MeguaPlantsAdmin.herramientas;
 
 import android.net.Uri;
 
@@ -29,3 +29,4 @@ public class Modelo_uri {
         return uri;
     }
 }
+

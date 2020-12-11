@@ -1,4 +1,4 @@
-package com.example.MeguaPlantsAdmin;
+package com.example.MeguaPlantsAdmin.herramientas;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,6 +28,8 @@ public class Manejador_Bitmap  {
         return rotar_bitmap(90,bitmap);
     }
 
+
+
     private Bitmap rotar_bitmap(int grados,Bitmap bitmap){
         Matrix matrix = new Matrix();
         matrix.postRotate(grados);
@@ -35,6 +37,7 @@ public class Manejador_Bitmap  {
         Bitmap rotatedBitmap = Bitmap.createBitmap(bitmap , 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         return rotatedBitmap;
     }
+
 
     public Bitmap  rotar_foto (  Uri uri ,Activity activity){
         ExifInterface exif=null;
@@ -65,7 +68,7 @@ public class Manejador_Bitmap  {
         Bitmap bitmap=null;
         try {
             // exif = new ExifInterface(uri.getEncodedPath());
-            exif = new ExifInterface((getRealPathFromURI(uri,activity)));
+             exif = new ExifInterface((getRealPathFromURI(uri,activity)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,6 +130,9 @@ public class Manejador_Bitmap  {
     }
 
 
+
+
+
     public byte[] de_bitmap_a_byte_array_comprees(Bitmap bitmap){
     ByteArrayOutputStream baos= new ByteArrayOutputStream();
     long peso= bitmap.getByteCount();
@@ -152,3 +158,4 @@ public class Manejador_Bitmap  {
 
     }
 }
+

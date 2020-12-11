@@ -1,10 +1,9 @@
-package com.example.MeguaPlantsAdmin.plantas;
+package com.example.MeguaPlantsAdmin.plantas.reconocimiento_planta;
 
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
@@ -16,8 +15,9 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.plantas.Modelo_planta;
 import com.example.MeguaPlantsAdmin.R;
+import com.example.MeguaPlantsAdmin.plantas.Adater_recycler_plantas;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

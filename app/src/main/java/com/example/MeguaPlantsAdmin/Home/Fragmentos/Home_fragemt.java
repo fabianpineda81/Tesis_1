@@ -15,7 +15,6 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,14 +24,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.MeguaPlantsAdmin.herramientas.Constantes;
+import com.example.MeguaPlantsAdmin.herramientas.Manejador_dialogos;
 import com.example.MeguaPlantsAdmin.plantas.Adater_recycler_plantas;
-import com.example.MeguaPlantsAdmin.Modelo_planta;
-import com.example.MeguaPlantsAdmin.plantas.Leer;
-import com.example.MeguaPlantsAdmin.plantas.Leer2;
-import com.example.MeguaPlantsAdmin.plantas.New_plant;
+import com.example.MeguaPlantsAdmin.plantas.Modelo_planta;
+import com.example.MeguaPlantsAdmin.plantas.reconocimiento_planta.Leer2;
+import com.example.MeguaPlantsAdmin.plantas.new_plant.New_plant_container;
 import com.example.MeguaPlantsAdmin.R;
-import com.example.MeguaPlantsAdmin.pruebas.Fragment_prueba;
-import com.example.MeguaPlantsAdmin.pruebas.Viewpager_prueba;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,8 +50,8 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class Home_fragemt extends Fragment {
-    private static final int CONSTANTE_TOMAR_FOTO =1 ;
-    private static final int CONSTANTE_ESCOGER_IMAGEN =2 ;
+
+
     FloatingActionButton btn_agregar,btn_leer;
     RecyclerView recyclerView;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -63,7 +61,7 @@ public class Home_fragemt extends Fragment {
     String[] opciones_imagenes= {"Escoger galeria ","Tomar una foto"};
     String ruta_obsoluta;
     File archivo_foto= null ;
-
+    Manejador_dialogos manejador_dialogos= new Manejador_dialogos();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -134,7 +132,7 @@ public class Home_fragemt extends Fragment {
         btn_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ir_agregar = new Intent(getContext(), New_plant.class);
+                Intent ir_agregar = new Intent(getContext(),New_plant_container.class);
                 startActivity(ir_agregar);
             }
         });
@@ -178,8 +176,10 @@ public class Home_fragemt extends Fragment {
     }
 
     private void leer() {
-        Dialog dialogo = crear_dialogo_escoger_imagen();
+
+        Dialog dialogo =manejador_dialogos.crear_dialogo_escoger_imagen(this);
         dialogo.show();
+
     }
 
 
@@ -199,98 +199,6 @@ public class Home_fragemt extends Fragment {
 
 
     }
-    public Dialog crear_dialogo_escoger_imagen() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext() );
-        builder.setTitle("escoger foto ").setItems(opciones_imagenes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(i == 0){
-                    seleccionar_imagen();
-                }else{
-
-                    tomar_foto_1();
-
-                }
-            }
-        });
-        return  builder.create();
-    }
-
-
-
-    private void seleccionar_imagen() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/");
-         startActivityForResult(intent.createChooser(intent,"Selecione aplicacion"), CONSTANTE_ESCOGER_IMAGEN);
-
-    }
-
-    private void tomar_foto_1() {
-
-                tomar_foto();
-
-    }
-
-
-
-
-
-
-    public void tomar_foto(){
-        // prende la camara
-         archivo_foto= null ;
-        Intent intent_tomar_foto= new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(intent_tomar_foto.resolveActivity(getActivity().getPackageManager())!=null){
-
-            try {
-                archivo_foto= crear_archivo_foto();
-
-
-            }catch (Exception e ){
-                e.printStackTrace();
-            }
-        }else{
-
-            Toast.makeText(view.getContext(),"dio null",Toast.LENGTH_LONG);
-
-        }
-
-        if(archivo_foto!=null ){
-            Uri url_foto = FileProvider.getUriForFile(view.getContext(),"com.example.MeguaPlantsAdmin",archivo_foto);
-            Log.d("Home_fragment","photo_uri:"+ url_foto);
-            intent_tomar_foto.putExtra(MediaStore.EXTRA_OUTPUT,url_foto);
-
-
-            startActivityForResult(intent_tomar_foto,CONSTANTE_TOMAR_FOTO);
-        }
-
-    }
-
-
-
-    private File crear_archivo_foto() throws IOException {
-
-        String time_stamp=new SimpleDateFormat("yyyyMMdd_HH-mm-ss").format(new Date());
-
-        String nombre_imagen="JPEG_"+time_stamp;
-
-
-        File storage_dir=getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-
-
-
-        File archivo_foto= File.createTempFile(nombre_imagen,".jpg",storage_dir);
-
-
-
-        Toast.makeText(view.getContext(),storage_dir.toString(),Toast.LENGTH_LONG);
-        ruta_obsoluta=archivo_foto.getAbsolutePath();
-
-        return  archivo_foto;
-    }
-
-
 
 
 
@@ -299,17 +207,18 @@ public class Home_fragemt extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri;
         Intent leer2= new Intent(getActivity(), Leer2.class);
+        Log.e("activity home","llego al onactivity");
         if ( resultCode == getActivity().RESULT_OK) {
 
             switch (requestCode){
-                case CONSTANTE_ESCOGER_IMAGEN:
+                case Constantes.CONSTANTE_ESCOGER_IMAGEN:
                 uri= data.getData();
                     leer2.putExtra("uri",uri.toString());
                     startActivity(leer2);
                     break;
 
-                case CONSTANTE_TOMAR_FOTO:
-                    uri= Uri.fromFile(archivo_foto);
+                case Constantes.CONSTANTE_TOMAR_FOTO:
+                    uri= Uri.fromFile(manejador_dialogos.getFoto());
                     leer2.putExtra("uri",uri.toString());
                     startActivity(leer2);
                     // asi estaba

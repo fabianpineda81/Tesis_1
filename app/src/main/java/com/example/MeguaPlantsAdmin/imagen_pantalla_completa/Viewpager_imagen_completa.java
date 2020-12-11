@@ -1,18 +1,17 @@
-package com.example.MeguaPlantsAdmin.pruebas;
+package com.example.MeguaPlantsAdmin.imagen_pantalla_completa;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.widget.Adapter;
 
-import com.example.MeguaPlantsAdmin.Modelo_planta;
+import com.example.MeguaPlantsAdmin.plantas.Modelo_planta;
 import com.example.MeguaPlantsAdmin.R;
 
 import java.util.ArrayList;
 
-public class Viewpager_prueba extends AppCompatActivity {
+public class Viewpager_imagen_completa extends AppCompatActivity {
     private FragmentStateAdapter pagerAdapter;
     private ViewPager2 viewPager2;
     private ArrayList<String> links;
@@ -26,7 +25,7 @@ public class Viewpager_prueba extends AppCompatActivity {
         viewPager2 = findViewById(R.id.pager);
 
         int pos = getIntent().getExtras().getInt("pos");
-        pagerAdapter= new View_pager_adapter(this,links);
+        pagerAdapter= new View_pager_imagen_completa_adapter(this,links);
         viewPager2.setAdapter(pagerAdapter);
         viewPager2.setCurrentItem(pos,false);
 
@@ -35,10 +34,10 @@ public class Viewpager_prueba extends AppCompatActivity {
 
     private ArrayList<String> obtener_links(Modelo_planta modelo_planta) {
         ArrayList<String> resultados= new ArrayList<>();
-        resultados.add(modelo_planta.getLink_imagen_modelo());
         resultados.add(modelo_planta.getLink_imagen_muestra_1());
         resultados.add(modelo_planta.getLink_imagen_muestra_2());
         resultados.add(modelo_planta.getLink_imagen_muestra_3());
+        resultados.add(modelo_planta.getLink_imagen_muestra_4());
         return  resultados;
     }
 }

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".plantas.new_plant.Caractaresticas"
+    android:background="@android:color/white"
+    >
+    <ScrollView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caracterisiticas "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <com.google.android.material.card.MaterialCardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="14dp"
+                >
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:background="@drawable/ic_sombrero_de_la_graduacion"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="Clasificacion cientifíca "
+
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:textColor="#403D3D"
+                        android:typeface="normal" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre cientifico"
+                    android:id="@+id/new_plant_nombre_cientifico_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/new_plant_nombre_cientifico"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Familia"
+                        android:id="@+id/new_plant_familia_container"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_plant_familia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/new_plant_genero_container"
+                        android:hint="Genero"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_plant_genero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_margin="14dp"
+                >
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:background="@drawable/ic_analisis"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="Caracteristicas"
+
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textStyle="bold"
+                        android:textColor="#403D3D"
+                        android:typeface="normal" />
+                </LinearLayout>
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_tipo_planta_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_tipo_planta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Tipo de planta"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_altura_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_altura"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Altura"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_diametro_copa_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_diametro_copa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Diametro de la copa"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_diametro_flor_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_diametro_flor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Diamtro de la flor"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_floracion_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_floracion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Floracion"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/new_plant_epoca_container"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_epoca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Epoca"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#DCCECE" />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    </ScrollView>
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

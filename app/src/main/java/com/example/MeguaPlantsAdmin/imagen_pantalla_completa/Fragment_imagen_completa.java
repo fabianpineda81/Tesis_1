@@ -1,4 +1,4 @@
-package com.example.MeguaPlantsAdmin.pruebas;
+package com.example.MeguaPlantsAdmin.imagen_pantalla_completa;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -23,10 +21,10 @@ import com.example.MeguaPlantsAdmin.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_prueba#newInstance} factory method to
+ * Use the {@link Fragment_imagen_completa#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_prueba extends Fragment {
+public class Fragment_imagen_completa extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +37,7 @@ public class Fragment_prueba extends Fragment {
     private String link;
     private String mParam2;
 
-    public Fragment_prueba() {
+    public Fragment_imagen_completa() {
         // Required empty public constructor
     }
 
@@ -52,8 +50,8 @@ public class Fragment_prueba extends Fragment {
      * @return A new instance of fragment fragment_prueba.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_prueba newInstance(String param1) {
-        Fragment_prueba fragment = new Fragment_prueba();
+    public static Fragment_imagen_completa newInstance(String param1) {
+        Fragment_imagen_completa fragment = new Fragment_imagen_completa();
         Bundle args = new Bundle();
         args.putString("link", param1);
 

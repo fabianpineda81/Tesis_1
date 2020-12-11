@@ -1,12 +1,16 @@
 package com.example.MeguaPlantsAdmin.Home;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ButtonBarLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,6 +19,9 @@ import com.example.MeguaPlantsAdmin.Home.Fragmentos.Buscar_fragment;
 import com.example.MeguaPlantsAdmin.Home.Fragmentos.Home_fragemt;
 import com.example.MeguaPlantsAdmin.Home.Fragmentos.Perfil_fragment;
 import com.example.MeguaPlantsAdmin.R;
+import com.example.MeguaPlantsAdmin.herramientas.Constantes;
+import com.example.MeguaPlantsAdmin.herramientas.Manejador_dialogos;
+import com.example.MeguaPlantsAdmin.plantas.reconocimiento_planta.Leer2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Container_Home extends AppCompatActivity {
@@ -79,4 +86,6 @@ public class Container_Home extends AppCompatActivity {
             bottom_bar.setSelectedItemId(R.id.item_home); //display the News fragment
         }
     }
+
+
 }

@@ -20,6 +20,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth= FirebaseAuth.getInstance();
+
+        verificar_usuario();
+
+    }
+
+
+
+
+    private void verificar_usuario() {
         authStateListener= new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -31,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-            mAuth.addAuthStateListener(authStateListener);
+        mAuth.addAuthStateListener(authStateListener);
     }
+
     private void ir_home() {
         Intent i = new Intent(MainActivity.this, Container_Home.class);
         startActivity(i);
