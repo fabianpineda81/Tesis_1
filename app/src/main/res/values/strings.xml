@@ -13,6 +13,7 @@
     <string name="user_name">Fabian</string>
     <string name="card_accountant_likes">1</string>
     <string name="name_trasition" translatable="false">name_trasition</string>
+    <string name="instruciones">Consejos sobre como presentar las plantas para hacer una indentificacion precisa</string>
 
 
 </resources>

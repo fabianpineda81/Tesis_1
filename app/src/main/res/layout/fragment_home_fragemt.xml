@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home.Fragmentos.Home_fragemt"
+    tools:context=".Home.Fragmentos.Plants__fragment"
     android:orientation="vertical">
     <include layout="@layout/toolbar"></include>
 

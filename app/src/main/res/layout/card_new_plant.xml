@@ -5,6 +5,8 @@
     android:layout_height="@dimen/height_card_view"
     cardview:cardCornerRadius="@dimen/card_corner_radius"
     android:layout_marginTop="15sp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
     >
 
     <FrameLayout
@@ -42,9 +44,11 @@
                 >
                 <CheckBox
                     android:id="@+id/card_like"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/selector_checkbox">
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+
+                    android:button="@drawable/selector_checkbox"
+                    >
                 </CheckBox>
                 <TextView
                     android:id="@+id/card_accountant_likes"

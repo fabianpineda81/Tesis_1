@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/agregar_planta_bottom_sheet"
+        style="@style/BottomSheetItem"
+        android:drawableStart="@drawable/ic_agregar_planta"
+        android:drawableLeft="@drawable/ic_agregar_planta"
+        android:text="Agregar planta"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/modificar_planta_bottom_sheet"
+        style="@style/BottomSheetItem"
+        android:drawableStart="@drawable/ic_editar"
+        android:drawableLeft="@drawable/ic_editar"
+        android:text="Modificar planta"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/eliminar_planta_bottom_sheet"
+        style="@style/BottomSheetItem"
+        android:drawableStart="@drawable/ic_eliminar"
+        android:drawableLeft="@drawable/ic_eliminar"
+        android:text="Eliminar planta"
+        />
+</LinearLayout>
+

@@ -1,0 +1,21 @@
+package com.example.MeguaAdmin.herramientas;
+
+public class Constantes {
+
+    public static final int CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO1 = 1,
+            CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO2 = 2,
+            CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO3 = 3,
+            CONSTANTE_FOTO_IMAGEN_MODELO=4,
+            CONSTANTE_IMAGEN_ESCOGIDA_MODELO=5,
+            CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_1=6,
+            CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_2=7,
+            CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_3=8,
+            CONSTANTE_FOTO_IMAGEN_MUESTRA_FOTO4=9,
+            CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_4=10,
+            CONSTANTE_PERMISO_READ=11,
+            CONSTANTE_ESCOGER_IMAGEN =2,
+            CONSTANTE_TOMAR_FOTO =1 ;
+
+    public static final String IMAGEN_MODELO="imagen modelo",IMAGEN_MUESTRA1="imagen muestra1",IMAGEN_MUESTRA2="imagen muestra2",IMAGEN_MUESTRA3="imagen muestra3",IMAGEN_MUESTRA4="imagen muestra4";
+
+}

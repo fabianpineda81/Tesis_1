@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "381388333925",
-    "firebase_url": "https://reconocimiento-admin.firebaseio.com",
-    "project_id": "reconocimiento-admin",
-    "storage_bucket": "reconocimiento-admin.appspot.com"
+    "project_number": "360907026082",
+    "firebase_url": "https://megua-99a87-default-rtdb.firebaseio.com",
+    "project_id": "megua-99a87",
+    "storage_bucket": "megua-99a87.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:381388333925:android:c105ce3c5738650475f78c",
+        "mobilesdk_app_id": "1:360907026082:android:88803f71755094ad9ff1fb",
         "android_client_info": {
-          "package_name": "com.example.MeguaPlantsAdmin"
+          "package_name": "com.example.MeguaAdmin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "381388333925-bddsecrs52h7bnthsks4kfq2n8os5lkk.apps.googleusercontent.com",
+          "client_id": "360907026082-jorvec921b5ijp8para0j3fm70grhncv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.MeguaPlantsAdmin",
+            "package_name": "com.example.MeguaAdmin",
             "certificate_hash": "8b078254d36a6dc73d9abf0b5ba101f03359135b"
           }
         },
         {
-          "client_id": "381388333925-k4ohkmjnj2bdo0p5433qol61hfs5ota4.apps.googleusercontent.com",
+          "client_id": "360907026082-bojlin7q6pf4dt29kdoci5aoh18t2810.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCibUIEjEbPMqm3yQuGDmIYey-aIc4pHus"
+          "current_key": "AIzaSyBf-Z7GUTo7el58qL4E2bme7vguKBdJxn4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "381388333925-k4ohkmjnj2bdo0p5433qol61hfs5ota4.apps.googleusercontent.com",
+              "client_id": "360907026082-bojlin7q6pf4dt29kdoci5aoh18t2810.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

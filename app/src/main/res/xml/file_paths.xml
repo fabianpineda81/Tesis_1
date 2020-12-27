@@ -2,5 +2,5 @@
 <paths  xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path
         name="camara"
-        path="Android/data/com.example.MeguaPlantsAdmin/files/Pictures"/>
+        path="Android/data/com.example.MeguaAdmin/files/Pictures"/>
 </paths> 

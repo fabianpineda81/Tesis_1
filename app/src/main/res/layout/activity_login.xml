@@ -8,12 +8,14 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         tools:context=".Login.Login"
-        android:background="@color/colorPrimary">
+
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:padding="10dp">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -41,10 +43,12 @@
                     android:layout_height="match_parent"
                     android:padding="5dp"
                     android:orientation="vertical">
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:theme="@style/edit_text_white"
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         >
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -57,7 +61,11 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:endIconMode="password_toggle"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
                         android:theme="@style/edit_text_white"
+
                         >
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -73,6 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:theme="@style/RaisedButtonDark"
+                        android:background="@color/colorPrimary"
 
 
                         />
@@ -91,27 +100,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/dont_have_account"
-                            android:textColor="@color/edit_text_white"
                             android:textSize="@dimen/text_size_dont_have_account"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"/>
+
                         <TextView
                             android:id="@+id/create_here"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/create_here"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:contextClickable="true"
-
-                            android:textSize="@dimen/text_size_dont_have_account"
                             android:layout_toRightOf="@+id/dont_have_account"
+                            android:contextClickable="true"
+                            android:text="@string/create_here"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/text_size_dont_have_account"
+                            android:textStyle="bold"
 
                             />
 
                         <ProgressBar
                             android:id="@+id/progress_bar_login"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"/>
                     </RelativeLayout>
                 </LinearLayout>
 
