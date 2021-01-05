@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
@@ -37,7 +38,7 @@ public class New_plant_container extends AppCompatActivity {
     EditText txt_nombre,txt_nombre_cientifico,txt_descripcion,txt_caracteristicas;
 
 
-
+    LinearLayout container_progress_bar;
     Manejador_permisos manejador_permisos;
     New_plant_manager new_plant_manager ;
     Toolbar toolbar;
@@ -167,7 +168,7 @@ public class New_plant_container extends AppCompatActivity {
 
         manejador_permisos= new Manejador_permisos(this);
         manejador_permisos.verificar_permiso();
-
+        container_progress_bar= findViewById(R.id.progressBar_container_new_plant);
 
 
         siguiete_fragemento=crear_onclick_siguiente_fragemto();
@@ -213,7 +214,7 @@ public class New_plant_container extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                container_progress_bar.setVisibility(View.VISIBLE);
                 String nombre,descripcion,datos_interes,nombre_cientifico,familia,genero,tipo_planta,altura,diametro_copa,diametro_flor,floracion,epoca;
                 nombre=datos_generales.getNombre();
                 descripcion=datos_generales.getDescripcion();
@@ -254,6 +255,9 @@ public class New_plant_container extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(verificar_ultimo_fragemento()){
+                    container_progress_bar.setVisibility(View.VISIBLE);
+                    btn_atras.setEnabled(false);
+                    btn_siguiente.setEnabled(false);
                     String nombre,descripcion,datos_interes,nombre_cientifico,familia,genero,tipo_planta,altura,diametro_copa,diametro_flor,floracion,epoca;
                     Modelo_uri imagen_modelo, imagen_muestra_1,imagen_muestra_2,imagen_muestra_3,imagen_muestra_4;
                     nombre=datos_generales.getNombre();

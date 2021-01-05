@@ -12,12 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
+import com.example.MeguaAdmin.Home.Container_Home;
+import com.example.MeguaAdmin.Home.Instrucciones_identificar;
 import com.example.MeguaAdmin.R;
 import com.example.MeguaAdmin.herramientas.Constantes;
 import com.example.MeguaAdmin.herramientas.Manejador_dialogos;
 import com.example.MeguaAdmin.plantas.reconocimiento_planta.Leer2;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +30,9 @@ import com.google.android.material.button.MaterialButton;
  */
 public class Home_fragment extends Fragment {
         Manejador_dialogos manejador_dialogos;
-        ImageButton identificar;
-        ImageButton ver_plantas;
+        LinearLayout identificar;
+        LinearLayout ver_plantas;
+        MaterialCardView instruciones_home;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -80,10 +85,26 @@ public class Home_fragment extends Fragment {
 
     private void inicializar(View view) {
         identificar = view.findViewById(R.id.identificar_home);
+        ver_plantas= view.findViewById(R.id.ver_plantas_home);
+        ver_plantas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Container_Home.class);
+                startActivity(i);
+            }
+        });
         identificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 leer();
+            }
+        });
+        instruciones_home= view.findViewById(R.id.instruciones_home);
+        instruciones_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Instrucciones_identificar.class);
+                startActivity(i);
             }
         });
     }

@@ -224,6 +224,7 @@ public class Manejador_dialogos extends BottomSheetDialogFragment {
                  new Modelo_planta().eliminar_firebase(planta.getNombre_cientifico());
                 Toast.makeText(activity,"Eliminado con exito",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(activity, Container_Home.class);
+                planta.eliminar_firebase();
                 activity.startActivity(intent);
 
 

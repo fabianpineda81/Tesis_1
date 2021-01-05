@@ -59,7 +59,7 @@ public class Adater_recycler_plantas extends RecyclerView.Adapter<Adater_recycle
         Log.e("HOlDER",planta.getId());
         Log.e("holder",""+plantas.size());
         holder.nombre.setText(planta.getNombre());
-        holder.numero_me_gusta.setText("0");
+
         holder.me_gusta.setChecked(usuario.is_favorita(planta.getNombre_cientifico()));
         holder.me_gusta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +155,7 @@ public class Adater_recycler_plantas extends RecyclerView.Adapter<Adater_recycle
 
     public  class Planta_View_holder extends RecyclerView.ViewHolder {
         private ImageView imagen;
-        private TextView nombre,numero_me_gusta;
+        private TextView nombre;
         private CheckBox me_gusta;
         private CardView carta_planta;
 
@@ -164,7 +164,7 @@ public class Adater_recycler_plantas extends RecyclerView.Adapter<Adater_recycle
             imagen= itemView.findViewById(R.id.card_picture);
             nombre=itemView.findViewById(R.id.card_text_nombre_planta);
             me_gusta=itemView.findViewById(R.id.card_like);
-            numero_me_gusta= itemView.findViewById(R.id.card_numero_me_gusta);
+
             carta_planta=itemView.findViewById(R.id.card_planta);
 
 

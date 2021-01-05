@@ -38,11 +38,14 @@ public class Manejador_notificaciones {
 
     public void  crear_notificacion(String titulo ,String mensaje) {
 
-        NotificationCompat.Builder notificacion   =  new NotificationCompat.Builder(activity.getBaseContext(),"hola")
+        NotificationCompat.Builder notificacion   =  new NotificationCompat.Builder(activity.getApplicationContext(),"hola")
                 .setSmallIcon(R.drawable.ic_home)
                 .setContentTitle(titulo)
                 .setContentText(mensaje)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(mensaje));
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(mensaje))
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setDefaults(NotificationCompat.DEFAULT_SOUND)
+                .setVibrate(new long[]{1000,1000,1000,1000,1000});
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(activity);
 
@@ -54,12 +57,16 @@ public class Manejador_notificaciones {
 
     public void crear_notificacion_barra(String titulo ,String mensaje,int progreso) {
 
-        NotificationCompat.Builder notificacion   =  new NotificationCompat.Builder(activity,"hola")
+        NotificationCompat.Builder notificacion   =  new NotificationCompat.Builder(activity.getApplicationContext(),"hola")
                 .setSmallIcon(R.drawable.ic_home)
                 .setContentTitle(titulo)
                 .setContentText(mensaje)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(mensaje ))
-                .setProgress(100, progreso,false);
+                .setProgress(100, progreso,false)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setDefaults(NotificationCompat.DEFAULT_SOUND)
+                .setVibrate(new long[]{1000,1000,1000,1000,1000});
+        ;
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(activity);
 
         // notificationId is a unique int for each notification that you must define

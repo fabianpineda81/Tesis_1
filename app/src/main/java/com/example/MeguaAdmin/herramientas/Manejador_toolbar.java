@@ -3,6 +3,8 @@ package com.example.MeguaAdmin.herramientas;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.MeguaAdmin.R;
+
 public class Manejador_toolbar {
 
 

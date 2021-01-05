@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Home.Fragmentos.Home_fragment"
-    android:background="#7DB59B">
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,29 +26,35 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="30dp"
 
-
             >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:background="#DEF3DF"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+
+
+
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:layout_marginRight="100dp">
-                    <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_marginRight="100dp"
+                    android:background="@drawable/riple"
+                    android:id="@+id/identificar_home"
+
+
+                    
+                    >
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/ic_baseline_camera_alt_24"
-                        android:id="@+id/identificar_home"
+                        android:layout_marginTop="7dp"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -57,14 +64,17 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_gravity="center">
-                    <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_gravity="center"
+                    android:background="@drawable/riple"
+                    android:id="@+id/ver_plantas_home">
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/ic_hoja"
+                        android:layout_marginTop="7dp"
 
                         />
                     <TextView

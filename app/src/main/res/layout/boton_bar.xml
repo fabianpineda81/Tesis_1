@@ -7,9 +7,14 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/heigth_bottombar"
+        android:layout_height="60dp"
         android:layout_gravity="bottom|end"
-        android:background="#f5f5f5"
+        android:background="@color/verde_oscuro"
+        design:itemTextColor="@android:color/white"
+
+
+
+
         design:menu="@menu/menu_navigation"
         >
 

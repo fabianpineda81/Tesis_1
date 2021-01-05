@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 
 import com.example.MeguaAdmin.Home.Container_Home;
 import com.example.MeguaAdmin.MainActivity;
+import com.example.MeguaAdmin.herramientas.Constantes;
 import com.example.MeguaAdmin.herramientas.My_aplicacion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -58,7 +59,7 @@ public class Modelo_Login {
     }
 
     private void crear_usuario_data_base(String id , String correo,String contra,String username) {
-        Modelo_usuario usuario=  new Modelo_usuario(id,username,correo,contra);
+        Modelo_usuario usuario=  new Modelo_usuario(id,username,correo,contra, Constantes.ROL_ADMINISTRADOR);
         usuario.montar_firebase(activity);
     }
 
@@ -72,10 +73,11 @@ public class Modelo_Login {
                     activity_login.hide_progress_bar();
                     ir_home();
 
+
                 }else{
                     activity_login.hide_progress_bar();
                     activity_login.enable_input();
-                Toast.makeText(activity_login.getBaseContext(),"datos arroneos",Toast.LENGTH_LONG);
+
 
                 }
             }
@@ -83,6 +85,7 @@ public class Modelo_Login {
             @Override
             public void onFailure(@NonNull Exception e) {
                 e.printStackTrace();
+                Toast.makeText(activity_login.getBaseContext(),"datos arroneos",Toast.LENGTH_LONG).show();
             }
         });
 

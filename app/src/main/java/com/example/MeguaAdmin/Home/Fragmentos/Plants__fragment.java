@@ -110,7 +110,7 @@ public class Plants__fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view=inflater.inflate(R.layout.fragment_home_fragemt, container, false);
-            showToolbar("Home",false,view);
+            showToolbar("Plantas",false,view);
             inicializar(view);
         setHasOptionsMenu(true);
 
@@ -125,6 +125,7 @@ public class Plants__fragment extends Fragment {
         this.view=view;
         my_aplicacion= (My_aplicacion) getActivity().getApplication();
         plantas=my_aplicacion.getPlantas();
+        Log.e("INICIALIZAR", "FRAGMENTA PLANTAS");
         usuario= my_aplicacion.getUsuario();
 
         Log.e("USUARIO",usuario.getCorreo());

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.MeguaAdmin.R;
+import com.example.MeguaAdmin.herramientas.My_aplicacion;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,6 +22,7 @@ public class Crear_cuenta extends AppCompatActivity {
     private TextInputEditText username, contraseña, contraseña2,codigo, correo;
     private TextInputLayout username_container,contraseña_container,contraseña2_container, codigo_container,correo_continer;
     private MaterialButton btn_crear_cuenta;
+    private My_aplicacion my_aplicacion;
 
 
     @Override
@@ -31,6 +33,7 @@ public class Crear_cuenta extends AppCompatActivity {
     }
 
     private void inicializar() {
+        my_aplicacion=(My_aplicacion) getApplication();
         username= findViewById(R.id.username);
         correo= findViewById(R.id.correo);
         contraseña= findViewById(R.id.contraseña);
@@ -53,6 +56,7 @@ public class Crear_cuenta extends AppCompatActivity {
                     modelo_login.crear_usuario_correo(correo.getText().toString(),contraseña.getText().toString(),username.getText().toString(),null);
                     btn_crear_cuenta.setEnabled(false);
                     Toast.makeText(Crear_cuenta.this,"Usuario creado correctamente ", Toast.LENGTH_LONG).show();
+                    my_aplicacion.eliminar_codigo(codigo.getText().toString());
                 }else {
                     Toast.makeText(Crear_cuenta.this,"algo falta ", Toast.LENGTH_LONG).show();
                 }
@@ -94,6 +98,13 @@ public class Crear_cuenta extends AppCompatActivity {
         if(TextUtils.isEmpty(codigo.getText())){
             insertar_error_vacio(codigo,codigo_container,"Texto obligatorio");
             resultado=false;
+        }else {
+            if(!true/*my_aplicacion.verificar_codigo(codigo.getText().toString())*/){
+                resultado=false;
+                crear_error_simple(codigo_container,"codigo invalido");
+            }else{
+                codigo_container.setErrorEnabled(false);
+            }
         }
 
         if(!contraseña.getText().toString().equals(contraseña2.getText().toString())){
@@ -104,6 +115,10 @@ public class Crear_cuenta extends AppCompatActivity {
             resultado=false;
         }
       return resultado;
+    }
+
+    private void crear_error_simple(TextInputLayout container, String error) {
+        codigo_container.setError(error);
     }
 
 

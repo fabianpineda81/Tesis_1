@@ -5,7 +5,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-
+    android:background="@drawable/background"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
@@ -16,6 +16,7 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     tools:context=".plantas.new_plant.New_plant_container">
     <include layout="@layout/toolbar"></include>
+
     <FrameLayout
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:id="@+id/new_plant_container_layout"
@@ -23,7 +24,36 @@
         android:layout_height="match_parent"
         android:paddingBottom="70dp">
 
+
     </FrameLayout>
+    <LinearLayout
+        android:id="@+id/progressBar_container_new_plant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="100dp"
+        android:padding="20dp"
+        android:visibility="gone"
+
+        >
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Subiendo planta"
+            android:textColor="#000"
+            android:gravity="center"
+            />
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:indeterminate="true"
+            />
+
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/siguiente"
@@ -35,6 +65,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/colorAccent"
+        app:backgroundTint="@android:color/white"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -47,6 +78,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/colorAccent"
+        app:backgroundTint="@android:color/white"
         />
 
 

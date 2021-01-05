@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -55,7 +56,7 @@ public class Reconocedor_plata {
     ArrayList<Modelo_planta> plantas= new ArrayList<>();
     RecyclerView recyclerView;
     Boolean descargado = false;
-    Activity activity;
+    Leer2 activity;
     BottomSheetBehavior bottomSheetBehavior=null;
     Uri uri;
     Manejador_notificaciones   notificaciones;
@@ -65,12 +66,13 @@ public class Reconocedor_plata {
     FirebaseModelManager modelManager= FirebaseModelManager.getInstance();
 
 
-    public Reconocedor_plata(RecyclerView recyclerView, Activity activity,  BottomSheetBehavior bottomSheetBehavior, Uri uri,ImageView imagen_View) {
-        this.recyclerView = recyclerView;
+    public Reconocedor_plata(Leer2 activity, Uri uri) {
+        this.recyclerView = activity.recyclerView;
         this.activity = activity;
-        this.imagen_View =imagen_View;
-        this.bottomSheetBehavior = bottomSheetBehavior;
+        this.imagen_View =activity.imagen;
+        this.bottomSheetBehavior = activity.bottomSheetBehavior;
         this.uri=uri;
+
         descargar_modelo();
         notificaciones= new Manejador_notificaciones(activity);
     }
@@ -194,6 +196,9 @@ public class Reconocedor_plata {
         recyclerView.setAdapter(adater_recycler_plantas);
         //if(bottomSheetBehavior!=null){
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        activity.container_progress_bar.setVisibility(View.GONE);
+
+
       //  }
     }
 

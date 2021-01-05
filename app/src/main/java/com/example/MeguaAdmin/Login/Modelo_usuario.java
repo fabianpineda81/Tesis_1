@@ -21,6 +21,7 @@ public class Modelo_usuario {
     private String username;
     private String correo;
     private String contra;
+    private String rol;
     private ArrayList<String> plantas_favoritas;
     private ArrayList<String >plantas_vistas;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -45,11 +46,20 @@ public class Modelo_usuario {
         });
 
     }
-    public Modelo_usuario(String id , String username, String correo, String contra) {
+    public Modelo_usuario(String id , String username, String correo, String contra,String rol) {
         this.id= id ;
         this.username = username;
         this.correo = correo;
         this.contra = contra;
+        this.rol=rol;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public void agregar_planta_favorita(String id_planta){
@@ -117,14 +127,37 @@ public class Modelo_usuario {
 
         if(plantas_vistas== null){
             plantas_vistas= new ArrayList<>();
+            plantas_vistas.add(0,id);
+        }else{
+
+            eliminar_planta_buscada(id);
+            if(plantas_vistas.size()>=4){
+                plantas_vistas.remove(3);
+            }
+            plantas_vistas.add(0,id);
         }
         // 4 son el maximo de plantas ultimamente visitadas
-        if(plantas_vistas.size()>=4){
-            plantas_vistas.remove(3);
-        }
-        plantas_vistas.add(0,id);
+
+
         actualizar_plantas_visitadas_firebase();
         Log.e("PLANTA VISITADA","PLATAN VISITADA "+id);
+
+
+    }
+
+    public void eliminar_planta_buscada(String id_planta){
+        if(plantas_vistas!=null){
+            for( int i=0 ; i<plantas_vistas.size();i++){
+                String id= plantas_vistas.get(i);
+                if(id.equalsIgnoreCase(id_planta)){
+                    plantas_vistas.remove(i);
+                    i--;
+                }
+            }
+
+
+
+        }
 
 
     }

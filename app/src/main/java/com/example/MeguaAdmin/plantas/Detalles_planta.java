@@ -213,6 +213,11 @@ public class Detalles_planta extends AppCompatActivity {
         Manejador_toolbar.showToolbar(modelo_planta.getNombre(),true,this,toolbar);
 
     }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
 
 
 }

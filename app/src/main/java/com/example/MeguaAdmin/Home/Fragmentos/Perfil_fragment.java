@@ -1,10 +1,12 @@
 package com.example.MeguaAdmin.Home.Fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.MeguaAdmin.Home.Configuracion_aplicacion;
+import com.example.MeguaAdmin.Home.Container_Home;
 import com.example.MeguaAdmin.Login.Login;
 import com.example.MeguaAdmin.Login.Modelo_Login;
 import com.example.MeguaAdmin.Login.Modelo_usuario;
@@ -41,6 +45,7 @@ public class Perfil_fragment extends Fragment {
     Adater_recycler_plantas adater_recycler_plantas;
     ArrayList<Modelo_planta> plantas;
     ArrayList<Modelo_planta> plantas2;
+    CardView agrear_coleccion;
 
     Modelo_usuario  usuario;
     My_aplicacion  my_aplicacion;
@@ -99,6 +104,14 @@ public class Perfil_fragment extends Fragment {
     }
 
     private void inicializar(View view) {
+        agrear_coleccion= view.findViewById(R.id.agregar_coleccion);
+        agrear_coleccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Container_Home.class);
+                startActivity(i);
+            }
+        });
         my_aplicacion=(My_aplicacion)getActivity().getApplication();
         usuario=my_aplicacion.getUsuario();
         recyclerView= view.findViewById(R.id.recycler_plantas_favoritas_perfil);
@@ -163,6 +176,10 @@ public class Perfil_fragment extends Fragment {
             case R.id.cerrar_cession:
                 Modelo_Login  modelo_login=new Modelo_Login(getActivity());
                 modelo_login.cerrar_seccion_correo();
+                break;
+            case R.id.configuracion_aplicacion:
+                Intent i = new Intent(getActivity(), Configuracion_aplicacion.class);
+                startActivity(i);
                 break;
 
         }

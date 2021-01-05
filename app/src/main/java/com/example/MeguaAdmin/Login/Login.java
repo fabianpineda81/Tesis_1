@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.MeguaAdmin.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 public class Login extends AppCompatActivity {
@@ -25,11 +27,13 @@ public class Login extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         inicializar();
+
 
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,8 @@ public class Login extends AppCompatActivity {
 
 
 
+
+
     }
     public void disable_input() {
         // des hablitamos los imput
@@ -101,4 +107,8 @@ public class Login extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

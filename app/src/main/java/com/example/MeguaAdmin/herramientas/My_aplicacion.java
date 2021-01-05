@@ -3,11 +3,14 @@ package com.example.MeguaAdmin.herramientas;
 import android.app.Application;
 import android.util.Log;
 import android.view.Display;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.MeguaAdmin.Home.Fragmentos.Codigos;
+import com.example.MeguaAdmin.Login.Modelo_Login;
 import com.example.MeguaAdmin.Login.Modelo_usuario;
 import com.example.MeguaAdmin.MainActivity;
 import com.example.MeguaAdmin.R;
@@ -32,6 +35,7 @@ public class My_aplicacion extends Application {
     DatabaseReference myRef;
     Modelo_usuario usuario;
     ValueEventListener listaner;
+    ArrayList<Modelo_codigo> codigos;
 
 
 
@@ -43,15 +47,20 @@ public class My_aplicacion extends Application {
         myRef = database.getReference();
         mAuth= FirebaseAuth.getInstance();
         user_firebase =mAuth.getCurrentUser();
+        buscar_codigos();
 
         if(user_firebase!=null){
-            myRef.child("usuarios").child(user_firebase.getUid()).addValueEventListener(new ValueEventListener() {
+            myRef.child("usuarios").child(user_firebase.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
                         usuario = snapshot.getValue(Modelo_usuario.class);
-                        Log.e("MY APLICATION","ENCONTRADO ");
                         buscar_plantas(mainActivity);
+                        Log.e("my aplicatios","usuario encontrado ");
+
+                    }else {
+
+                        Log.e("my aplicatios","sanapshot null ");
                     }
 
                 }
@@ -61,6 +70,9 @@ public class My_aplicacion extends Application {
 
                 }
             });
+
+
+
         }else{
             Log.e("MAIN ACTIVITY","NO HAY USUARIO");
             mainActivity.verificar_usuario();
@@ -69,6 +81,33 @@ public class My_aplicacion extends Application {
 
 
 
+    }
+
+
+
+    private void buscar_codigos() {
+            codigos=new ArrayList<>();
+        myRef.child("codigos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+                    for(DataSnapshot codigo:snapshot.getChildren()){
+                        Modelo_codigo modelo_codigo = codigo.getValue(Modelo_codigo.class);
+                        if(modelo_codigo.isHabilidato()){
+                            codigos.add(modelo_codigo);
+                        }
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public  void buscar_plantas(final MainActivity mainActivity){
@@ -81,22 +120,24 @@ public class My_aplicacion extends Application {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(plantas==null){
                     plantas=new ArrayList<>();
-                    if(snapshot.exists()){
 
+                    mainActivity.verificar_usuario();
+                }
 
-                        for(DataSnapshot snapshot_planta: snapshot.getChildren()){
-                            Log.e("plantas firebase",snapshot_planta.toString());
-                            Modelo_planta planta= snapshot_planta.getValue(Modelo_planta.class);
-                            plantas.add(planta);
+                if(snapshot.exists()){
+                        plantas.clear();
 
-
-
-                       }
+                    for(DataSnapshot snapshot_planta: snapshot.getChildren()){
+                        Log.e("plantas firebase",snapshot_planta.toString());
+                        Modelo_planta planta= snapshot_planta.getValue(Modelo_planta.class);
+                        plantas.add(planta);
 
 
 
                     }
-                    mainActivity.verificar_usuario();
+
+
+
                 }
 
 
@@ -111,7 +152,7 @@ public class My_aplicacion extends Application {
             }
         };
 
-        myRef.child("plantas").addListenerForSingleValueEvent(listaner);
+        myRef.child("plantas").addValueEventListener(listaner);
 
     }
     public  void  eliminar_lisener(){
@@ -139,5 +180,35 @@ public class My_aplicacion extends Application {
 
     public Modelo_usuario getUsuario() {
         return usuario;
+    }
+
+    public ArrayList<Modelo_codigo> getCodigos() {
+        return codigos;
+    }
+
+    public void setCodigos(ArrayList<Modelo_codigo> codigos) {
+        this.codigos = codigos;
+    }
+
+    public boolean verificar_codigo(String codigo){
+        Boolean resultado = false ;
+        for(Modelo_codigo modelo_codigo:codigos){
+            codigo.trim();
+            if(modelo_codigo.getCodigo().equalsIgnoreCase(codigo)){
+                Log.e("CODIGO A verificar",modelo_codigo.getId());
+                return modelo_codigo.isHabilidato();
+            }
+        }
+        return resultado;
+    }
+
+    public void eliminar_codigo(String codigo) {
+        for(Modelo_codigo modelo_codigo:codigos){
+            codigo.trim();
+            if(modelo_codigo.getCodigo().equalsIgnoreCase(codigo)){
+                myRef.child("codigos").child(modelo_codigo.getId()).removeValue();
+                Log.e("CODIGO A ELIMINAR",modelo_codigo.getId());
+            }
+        }
     }
 }

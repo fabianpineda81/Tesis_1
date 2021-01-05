@@ -18,11 +18,16 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Login.Crear_cuenta"></activity>
+        android:theme="@style/AppTheme"
+
+        >
+        <activity android:name=".Home.Instrucciones_identificar"></activity>
+        <activity android:name=".Home.Fragmentos.Codigos" />
+        <activity android:name=".Home.Configuracion_aplicacion" />
+        <activity android:name=".Login.Crear_cuenta" />
         <activity
             android:name=".plantas.Detalles_planta"
-            android:parentActivityName=".Home.Container_Home" />
+             />
         <activity android:name=".imagen_pantalla_completa.Viewpager_imagen_completa" />
         <activity android:name=".plantas.reconocimiento_planta.Leer2" />
         <activity android:name=".plantas.reconocimiento_planta.Leer" />

@@ -7,9 +7,13 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.MeguaAdmin.Home.Container_Home;
 import com.example.MeguaAdmin.Login.Login;
+import com.example.MeguaAdmin.Login.Modelo_Login;
+import com.example.MeguaAdmin.Login.Modelo_usuario;
+import com.example.MeguaAdmin.herramientas.Constantes;
 import com.example.MeguaAdmin.herramientas.My_aplicacion;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Log.e("MAIN ACTIVITY","en el main activity");
            my_aplicacion.inicializar(this);
 
-
-
-
-
     }
 
 
@@ -51,8 +51,20 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user =mAuth.getCurrentUser();
 
                 if(user!= null ){
-                    Log.e("OJO","NOS VAMOS AL HOME ");
-                    ir_home();
+
+                    Modelo_usuario usuario = my_aplicacion.getUsuario();
+
+                    if(usuario.getRol().equalsIgnoreCase(Constantes.ROL_ADMINISTRADOR)){
+                        Log.e("OJO","NOS VAMOS AL HOME ");
+                        ir_home();
+                    }else{
+                        Toast.makeText(MainActivity.this,"Solo usuarios administradores",Toast.LENGTH_LONG).show();
+                        Modelo_Login modelo_login= new Modelo_Login(MainActivity.this);
+                        modelo_login.cerrar_seccion_correo();
+                        ir_login();
+                    }
+
+
 
 
                 }else{

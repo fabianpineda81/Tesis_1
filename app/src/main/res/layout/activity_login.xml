@@ -75,12 +75,13 @@
                             android:hint="@string/hint_password"
                             android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
-                    <Button
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginTop="20dp"
                         android:id="@+id/login"
                         android:text="@string/txt_btn_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:theme="@style/RaisedButtonDark"
+
                         android:background="@color/colorPrimary"
 
 
@@ -100,9 +101,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/dont_have_account"
-                            android:textSize="@dimen/text_size_dont_have_account"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorPrimary"/>
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/text_size_dont_have_account" />
 
                         <TextView
                             android:id="@+id/create_here"
@@ -115,13 +115,12 @@
                             android:textSize="@dimen/text_size_dont_have_account"
                             android:textStyle="bold"
 
+
                             />
 
-                        <ProgressBar
-                            android:id="@+id/progress_bar_login"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"/>
+
                     </RelativeLayout>
+
                 </LinearLayout>
 
 
@@ -130,5 +129,14 @@
 
 
         </LinearLayout>
+    <ProgressBar
+
+        android:id="@+id/progress_bar_login"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="400dp"
+
+        />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

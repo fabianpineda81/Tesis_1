@@ -1,13 +1,13 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/card_planta"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_card_view"
-    cardview:cardCornerRadius="@dimen/card_corner_radius"
+    cardview:cardCornerRadius="15dp"
     android:layout_marginTop="15sp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
 
     >
 
@@ -36,6 +36,7 @@
                 android:text="@string/user_name"
                 android:textSize="@dimen/card_text_size_user_name"
                 android:textColor="@android:color/white"
+                android:paddingLeft="10dp"
                 />
 
             <LinearLayout
@@ -43,6 +44,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/card_like_margin_top"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"
                 >
 
                 <com.google.android.material.checkbox.MaterialCheckBox
@@ -51,12 +54,7 @@
                     android:layout_height="24dp"
                     android:button="@drawable/selector_checkbox"
                     />
-                <TextView
-                    android:id="@+id/card_numero_me_gusta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/card_accountant_likes"
-                    android:textColor="@android:color/white"/>
+
             </LinearLayout>
 
 
@@ -65,4 +63,4 @@
 
     </FrameLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

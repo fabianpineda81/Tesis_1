@@ -14,8 +14,12 @@ public class Constantes {
             CONSTANTE_IMAGEN_ESCOGIDA_MUESTRA_4=10,
             CONSTANTE_PERMISO_READ=11,
             CONSTANTE_ESCOGER_IMAGEN =2,
-            CONSTANTE_TOMAR_FOTO =1 ;
+            CONSTANTE_TOMAR_FOTO =1,
+            CONSTANTE_HOME_HOME=1,
+            CONSTANTE_HOME_PLANTS=2,
+            CONSTANTE_HOME_PERFIL=3
+    ;
 
-    public static final String IMAGEN_MODELO="imagen modelo",IMAGEN_MUESTRA1="imagen muestra1",IMAGEN_MUESTRA2="imagen muestra2",IMAGEN_MUESTRA3="imagen muestra3",IMAGEN_MUESTRA4="imagen muestra4";
+    public static final String IMAGEN_MODELO="imagen modelo",IMAGEN_MUESTRA1="imagen muestra1",IMAGEN_MUESTRA2="imagen muestra2",IMAGEN_MUESTRA3="imagen muestra3",IMAGEN_MUESTRA4="imagen muestra4",ROL_ADMINISTRADOR="ADMINISTRADOR",ROL_USUARIO="USUARIO";
 
 }

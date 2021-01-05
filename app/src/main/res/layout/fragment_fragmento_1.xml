@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".plantas.new_plant.Datos_generales">
 
+
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
@@ -90,6 +91,8 @@
 
 
             </com.google.android.material.textfield.TextInputLayout>
+
+
 
         </LinearLayout>
     </ScrollView>

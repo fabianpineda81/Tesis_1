@@ -17,12 +17,41 @@
         android:adjustViewBounds="true"
         android:layout_gravity="center"
         />
+    <LinearLayout
+        android:id="@+id/progressBar_container_reconocimiento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="100dp"
+        android:padding="20dp"
 
+
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:text="Cargando Modelos"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#fff" />
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:indeterminate="true"
+            />
+
+    </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/bottom_sheet_resultados"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="550dp"
         android:background="@drawable/corner_radius"
 
         app:layout_behavior="@string/bottom_sheet_behavior"
@@ -49,6 +78,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/recycler_picture_leer"
                 />
+            <include layout="@layout/carta_planta_no_encontrada"/>
+
+
         </LinearLayout>
 
 

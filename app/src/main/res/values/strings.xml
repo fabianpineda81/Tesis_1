@@ -14,6 +14,12 @@
     <string name="card_accountant_likes">1</string>
     <string name="name_trasition" translatable="false">name_trasition</string>
     <string name="instruciones">Consejos sobre como presentar las plantas para hacer una indentificacion precisa</string>
+    <string name="expliacion_como_usar">Para poder indentificar una planta simplemente tome una foto de la planta o selecciones una imagen de su galeria y Megua Plants la indentificara al instante</string>
+    <string name="consejos_para_fotos">Una foto clara de plantas con el ángulo y la distancia adecuadas ayuda a MeguaPlants a entregarte un  resultado con mayor presicion</string>
+    <string name="consejo_1">"1.Enfoca la planta en el centro del la imagen, envita las imágenes osucuras o borrosas "</string>
+    <string name="consejo_2">2. Sí la planta en muy grande, sólo a segurate de incluir la hoja o la flor de la planta</string>
+    <string name="consejo_3">3.Evita acercarte demaciado, sólo asegúrate de que la hoja o la flor éstan claras y completas</string>
+    <string name="consejo_4">Solo incluye una especie a la vez</string>
 
 
 </resources>

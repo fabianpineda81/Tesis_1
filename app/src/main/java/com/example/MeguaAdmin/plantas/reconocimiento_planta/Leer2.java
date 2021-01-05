@@ -3,6 +3,7 @@ package com.example.MeguaAdmin.plantas.reconocimiento_planta;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.NotificationChannel;
@@ -15,25 +16,28 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.MeguaAdmin.Home.Instrucciones_identificar;
 import com.example.MeguaAdmin.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.IOException;
 
 public class Leer2 extends AppCompatActivity {
-    ImageView imagen;
+   public ImageView imagen;
 
-    BottomSheetBehavior bottomSheetBehavior;
-
-    Reconocedor_plata reconocedor_plata;
+  public   BottomSheetBehavior bottomSheetBehavior;
+    public  LinearLayout container_progress_bar;
+   public Reconocedor_plata reconocedor_plata;
     RecyclerView recyclerView;
     Uri uri;
+    CardView planta_no_encontrada;
     private static final int CONSTANTE_IMAGEN_ESCOGIDA_MODELO =1 ;
 
     @Override
@@ -55,6 +59,15 @@ public class Leer2 extends AppCompatActivity {
 
         View bottom_sheet= findViewById(R.id.bottom_sheet_resultados);
         bottomSheetBehavior= BottomSheetBehavior.from(bottom_sheet);
+        container_progress_bar= findViewById(R.id.progressBar_container_reconocimiento);
+        planta_no_encontrada= findViewById(R.id.card_platna_no_encontrada);
+        planta_no_encontrada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Leer2.this, Instrucciones_identificar.class);
+                startActivity(i);
+            }
+        });
 
 
        recyclerView = findViewById(R.id.recycler_picture_leer);
@@ -93,7 +106,7 @@ public class Leer2 extends AppCompatActivity {
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        reconocedor_plata = new Reconocedor_plata(recyclerView, Leer2.this, bottomSheetBehavior,uri,imagen);
+                        reconocedor_plata = new Reconocedor_plata(Leer2.this,uri);
                         return false;
                     }
                 }).into(imagen);

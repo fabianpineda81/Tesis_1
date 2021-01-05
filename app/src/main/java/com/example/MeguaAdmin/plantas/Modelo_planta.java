@@ -116,6 +116,11 @@ public class Modelo_planta implements Parcelable  {
         DatabaseReference myRef = database.getReference();
         myRef.child("plantas").child(id).removeValue();
     }
+    public  void eliminar_firebase(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+        myRef.child("plantas").child(this.id).removeValue();
+    }
 
     public void modificar_plant(Modelo_planta planta_nueva){
 

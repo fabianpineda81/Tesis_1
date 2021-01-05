@@ -37,6 +37,7 @@ public class Container_Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         bottom_bar= findViewById(R.id.bottom_bar);
+
         inicializar();
         onQueryTextListener= new SearchView.OnQueryTextListener() {
             @Override
@@ -62,6 +63,7 @@ public class Container_Home extends AppCompatActivity {
 
     private void inicializar() {
 
+
         bottom_bar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -69,20 +71,20 @@ public class Container_Home extends AppCompatActivity {
                         case R.id.item_plants:
                             Plants__fragment plants = new Plants__fragment();
                             add_fragment(plants);
-                            Toast.makeText(Container_Home.this,"Home",Toast.LENGTH_LONG).show();
+
                             to_be_home=true;
 
                             break;
                         case R.id.item_profile:
                             Perfil_fragment perfil = new Perfil_fragment();
                             add_fragment(perfil);
-                            Toast.makeText(Container_Home.this,"profile",Toast.LENGTH_LONG).show();
+
                             to_be_home=false;
                             break;
                         case R.id.item_home:
                              Home_fragment home= new Home_fragment();
                                  add_fragment(home);
-                            Toast.makeText(Container_Home.this,"buscar ",Toast.LENGTH_LONG).show();
+
                             to_be_home=false;
                             break;
 

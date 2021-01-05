@@ -1,13 +1,16 @@
 package com.example.MeguaAdmin.plantas.new_plant;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.MeguaAdmin.Home.Container_Home;
 import com.example.MeguaAdmin.herramientas.Constantes;
 import com.example.MeguaAdmin.herramientas.Manejador_Bitmap;
 import com.example.MeguaAdmin.herramientas.Manejador_notificaciones;
@@ -67,12 +70,18 @@ public class Modifi_plant_manager {
             planta_vieja.modificar_plant(planta_nueva);
             Toast.makeText(activity,"Planta modificada correctamente",Toast.LENGTH_LONG).show();
             Log.e("Modifi_plant","modifico la planta  "+planta_nueva.getDatos_interes());
+            ir_home();
         }else{
             montar_imagen1(modelo_uris.get(0),modelo_uris.get(0).getNombre());
         }
 
 
 }
+
+    private void ir_home() {
+        Intent i = new Intent(activity, Container_Home.class);
+        activity.startActivity(i);
+    }
 
     private void  montar_imagen1(Modelo_uri New_imagen, final String nombre_imagen ){
 
@@ -155,6 +164,7 @@ public class Modifi_plant_manager {
                        }else{
                            planta_vieja.modificar_plant(planta_nueva);
                            Toast.makeText(activity,"Planta modificada correctamente",Toast.LENGTH_LONG).show();
+                           ir_home();
                        }
 
                     }

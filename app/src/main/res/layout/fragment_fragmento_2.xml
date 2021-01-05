@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".plantas.new_plant.Caractaresticas"
-    android:background="@android:color/white"
+
     >
     <ScrollView
         android:layout_marginTop="20dp"
@@ -18,37 +18,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
 
+
+
         >
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Caracterisiticas "
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
         <com.google.android.material.card.MaterialCardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            >
+
+
+            app:cardBackgroundColor="#FFFFFF">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_margin="14dp"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:orientation="horizontal">
+
                     <ImageView
-                        android:background="@drawable/ic_sombrero_de_la_graduacion"
                         android:layout_width="20dp"
-                        android:layout_height="20dp"/>
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_sombrero_de_la_graduacion" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -59,90 +59,77 @@
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textStyle="bold"
                         android:textColor="#403D3D"
+                        android:textStyle="bold"
                         android:typeface="normal" />
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nombre cientifico"
                     android:id="@+id/new_plant_nombre_cientifico_container"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/new_plant_nombre_cientifico"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                <View
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#DCCECE" />
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre cientifico">
 
-
-                    <com.google.android.material.textfield.TextInputLayout
-
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_nombre_cientifico"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Familia"
-                        android:id="@+id/new_plant_familia_container"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        >
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/new_plant_familia"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <View
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#DCCECE" />
 
 
+                <com.google.android.material.textfield.TextInputLayout
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/new_plant_familia_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Familia">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_familia"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/new_plant_genero_container"
-                        android:hint="Genero"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        >
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/new_plant_genero"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <View
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="#DCCECE" />
 
 
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:id="@+id/new_plant_genero_container"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Genero">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/new_plant_genero"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#DCCECE" />
 
 
             </LinearLayout>
